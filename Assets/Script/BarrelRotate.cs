@@ -2,23 +2,25 @@ using UnityEngine;
 
 public class BarrelRotate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private Transform barrel;
-    [SerializeField] private float barrelSpeed;
-    [SerializeField] private GameObject TargetObject;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] public Transform target;
 
-	Quaternion barrelRotation(Vector3 Target)
-	{
-		Target.z = Camera.main.transform.position.z;
-		Vector3 direction = Camera.main.ScreenToWorldPoint(Target) - transform.position;
-		float angle  = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		return Quaternion.AngleAxis(angle, Vector3.forward);
-	}
-	
+	private float currentRotation = 0.0f;
 
 	void Update()
 	{
-		barrel.rotation = Quaternion.Lerp(barrel.rotation, barrelRotation(TargetObject.transform.position), barrelSpeed * Time.deltaTime);
+		RotateToTarget();
 	}
 
+    public void RotateToTarget()
+    {
+        if (target != null)
+        {
+            Vector3 targetDirection = target.position - transform.position;
+            float targetRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+            float step = rotationSpeed * Time.deltaTime;
+            currentRotation = Mathf.MoveTowardsAngle(currentRotation, targetRotation, step);
+            transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+        }
+    }
 }
