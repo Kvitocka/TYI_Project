@@ -8,17 +8,11 @@ public class linear_movement : MonoBehaviour
     public float target_speed = 5.0f;
     public float target_acceleration = 5.0f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public AirResistance AirResistance;
     void FixedUpdate()
-    {
-        transform.Translate(target_direction * target_speed / 50);
+    { //target_direction*18.85f*DynamicViscosityOfLiquid*radius calculate Air resistance
+        transform.Translate((target_direction * target_speed / 50)-AirResistance.CalkulateAirResistance(target_direction,target_speed));
         target_speed += target_acceleration/50;
     }
+
 }

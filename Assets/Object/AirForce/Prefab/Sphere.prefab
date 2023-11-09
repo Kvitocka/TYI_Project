@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5546709314365213472}
   - component: {fileID: 8810450645515459180}
   - component: {fileID: 4997360927840023177}
+  - component: {fileID: 2273923780792795938}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   target_direction: {x: 1, y: 0, z: 0}
   target_speed: 10
   target_acceleration: 5
+  AirResistance: {fileID: 2273923780792795938}
 --- !u!114 &8810450645515459180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +169,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2273923780792795938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280912881686487074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582c4fecde532b84aaeae0369602f692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseAirResistance: 1
+  radius: 1
+  DynamicViscosityOfLiquid: 0.0000163
