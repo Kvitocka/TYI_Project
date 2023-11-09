@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac615ea2754dfc43aaec82f4ad95201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target_direction: {x: 1, y: 1, z: 0}
-  target_speed: 5
+  target_direction: {x: 1, y: 0, z: 0}
+  target_speed: 10
   target_acceleration: 5
 --- !u!114 &8810450645515459180
 MonoBehaviour:
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bc4c9521beed54d96c063cb7282cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityValue: 9.8
+  GravityValue: -5
   "Mass\u0421orps": 10
   MassOil: 10
   SpendOilForSecond: 0

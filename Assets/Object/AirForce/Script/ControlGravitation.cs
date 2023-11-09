@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class controlGravyt : MonoBehaviour
 {
-     public float GravityValue=9.8f;
+     public float GravityValue;
      public float MassСorps=10f;
      public float MassOil=10f;
 
@@ -16,7 +16,7 @@ public class controlGravyt : MonoBehaviour
      public Rigidbody rb;
     void Awake()
     {
-        Physics.gravity = new Vector3(0, GravityValue, 0);
+        
     }
 
     private void Start()
@@ -25,6 +25,7 @@ public class controlGravyt : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Physics.gravity = new Vector3(0, GravityValue, 0);
         SpendOilForframe = SpendOilForSecond/50;
         if  (MassOil>0){
             if(MassOil>SpendOilForframe){MassOil-=SpendOilForframe;}

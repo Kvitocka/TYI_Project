@@ -16,8 +16,9 @@ public class linear_movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(target_direction * target_speed * target_acceleration * Time.deltaTime);
+        transform.Translate(target_direction * target_speed / 50);
+        target_speed += target_acceleration/50;
     }
 }
