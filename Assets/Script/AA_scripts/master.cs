@@ -19,7 +19,7 @@ public class Master : MonoBehaviour
                 Vector3 targetDirection = Target.position - transform.position;
 
                 float angleToTargetY = Vector3.SignedAngle(transform.right, targetDirection, transform.up);
-                float angleToTargetZ = Vector3.SignedAngle(transform.right, targetDirection, transform.forward);
+                float angleToTargetZ = Vector3.Angle(transform.right, targetDirection);
 
                 motionRotationTurret.motionRotation_Y(angleToTargetY, 50f);
                 motionRotationcannon.motionRotation_Z(angleToTargetZ, 50f);
