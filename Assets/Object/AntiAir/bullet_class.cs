@@ -7,24 +7,26 @@ public class bullet_class : MonoBehaviour
     public Transform Aimer;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
-    public float fireRate = 0.5f; // Adjust this value to set the fire rate (in seconds).
-
-    private float nextFireTime;
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
             Shoot();
-            nextFireTime = Time.time + 1.0f / fireRate;
+        }
+
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, GameObject.position, GameObject.rotation);
+        GameObject correctPrefab = bulletPrefab;
+        correctPrefab.transform.position =new Vector3 (0f,0f,0f);
+        GameObject bullet = Instantiate(bulletPrefab, Aimer.transform, true);
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
         if (bulletRb != null)
         {
-            bulletRb.AddForce(GameObject.forward * bulletSpeed, ForceMode.VelocityChange);
+            bulletRb.AddForce(Aimer.forward * bulletSpeed, ForceMode.VelocityChange);
         }
     }
 }
