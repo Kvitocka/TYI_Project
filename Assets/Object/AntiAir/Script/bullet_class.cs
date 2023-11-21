@@ -18,16 +18,16 @@ public class bullet_class : MonoBehaviour
         }
     }
 
-    void Shoot()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+  void Shoot()
+{
+    GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
+    Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+    
+    bulletRb.AddForce(Aimer.forward * bulletSpeed, ForceMode.VelocityChange);
+    
+}
 
-        if (bulletRb != null)
-        {
-            bulletRb.AddForce(Aimer.forward * bulletSpeed, ForceMode.VelocityChange);
-        }
-    }
+
 
     IEnumerator Reload()
     {
