@@ -23,7 +23,7 @@ public class bullet_class : MonoBehaviour
     GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
     
-    bulletRb.AddForce(Aimer.forward * bulletSpeed, ForceMode.VelocityChange);
+    bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
     
 }
 
