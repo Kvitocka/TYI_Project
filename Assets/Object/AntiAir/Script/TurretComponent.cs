@@ -15,10 +15,6 @@ public class TurretComponent : MonoBehaviour
     private void Awake()
     {
         cannonComponent = GetComponentInChildren<CannonComponent>();
-        if (cannonComponent == null)
-        {
-            Debug.LogError("CannonComponent not found in childrens.");
-        }
     }
 
     void Start()

@@ -17,10 +17,6 @@ public class AntiAirMachine : MonoBehaviour
     private void Awake()
     {
         turretComponent = GetComponentInChildren<TurretComponent>();
-        if (turretComponent == null)
-        {
-            Debug.LogError("TurrentComponent not found in childrens.");
-        }
     }
 
     void Start()
