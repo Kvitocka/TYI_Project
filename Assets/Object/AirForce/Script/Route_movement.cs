@@ -15,9 +15,8 @@ public class Route_movement : MonoBehaviour
     {
 
         // Add points to the list
-        pointList.Add(new Vector3(10.0f, 5.0f, 7.0f));
-        pointList.Add(new Vector3(4.0f, 5.0f, 6.0f));
-        pointList.Add(new Vector3(-2.0f, 0.0f, 8.0f));
+        pointList.Add(new Vector3(10.0f, 25.0f, 25.0f));
+        pointList.Add(new Vector3(100.0f, 25.0f, 25.0f));
         Debug.Log(transform.position);
         movement_direction = pointList[0] - transform.position;
 
