@@ -32,7 +32,7 @@ public class CannonComponent : MonoBehaviour
 
             transform.Rotate(0, 0, rotationThisFrame);
 
-            if (transform.rotation.eulerAngles.z <= targetAngle + 0.5 && transform.rotation.eulerAngles.z >= targetAngle - 0.5)
+            if (transform.rotation.eulerAngles.z <= targetAngle + 0.1 && transform.rotation.eulerAngles.z >= targetAngle - 0.1)
             {
                 needRotate = false;
             }
