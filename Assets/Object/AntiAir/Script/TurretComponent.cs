@@ -26,7 +26,7 @@ public class TurretComponent : MonoBehaviour
     {
         if (needRotate)
         {
-            Vector3 direction = targetPosition - transform.position;
+            Vector3 direction = targetPosition - cannonComponent.transform.position;
             float angleInRad = Mathf.Atan2(direction.z, direction.x);
             float angleInDegr = angleInRad * Mathf.Rad2Deg * -1.0f;
 

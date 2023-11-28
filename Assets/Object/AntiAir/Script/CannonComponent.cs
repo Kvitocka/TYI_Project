@@ -32,34 +32,35 @@ public class CannonComponent : MonoBehaviour
 
             transform.Rotate(0, 0, rotationThisFrame);
 
-            if (transform.rotation.eulerAngles.z <= targetAngle + 0.5 && transform.rotation.eulerAngles.z >= targetAngle - 0.5)
+            if (transform.rotation.eulerAngles.z <= targetAngle && transform.rotation.eulerAngles.z >= targetAngle)
             {
                 needRotate = false;
             }
         }
     }
     
-    private float CalculateDistanceNoSqrt(Vector3 point1, Vector3 point2)
+    private float CalculateTan(Vector3 point1, Vector3 point2)
     {
-        float deltaX = point2.x - point1.x;
-        float deltaY = point2.y - point1.y;
-        return deltaX * deltaX + deltaY * deltaY;
+        float deltaX = Math.Abs(point2.x - point1.x);
+        float deltaY = Math.Abs(point2.y - point1.y);
+        return deltaY/deltaX;
     }
 
     public void TargetTo(Vector3 coordinate)
     {
         needRotate = true;
 
-        Vector3 point = new Vector3(coordinate.x, CannonPosition.position.y);
-        float catenary  = CalculateDistanceNoSqrt(CannonPosition.position , point);
-        float hypotenuse = CalculateDistanceNoSqrt(coordinate, CannonPosition.position);
-        Debug.Log("catenary: " + catenary);
-        Debug.Log("hypotenuse: "  + hypotenuse);
-        targetAngle = Mathf.Acos(catenary  / hypotenuse) * Mathf.Rad2Deg;
-        targetAngle -= targetAngle / 5.0f;
+        float hip =(float) Vector3.Distance(  coordinate , CannonPosition.transform.position );
+        float kat =(float) Vector3.Distance( new Vector3 (coordinate.x,CannonPosition.transform.position.y,coordinate.z)  , CannonPosition.transform.position );
+        targetAngle = (float)(Math.Acos(kat/hip)*180/Math.PI);
+
+
+
+        //if (targetAngle > maxAngle) {targetAngle = maxAngle;}
+        //if ( targetAngle < minAngle) {targetAngle = minAngle;} 
+
+        //targetAngle -= targetAngle / 5.0f;
         Debug.Log(targetAngle);
 
-        if (targetAngle > maxAngle) {targetAngle = maxAngle;}
-        if ( targetAngle < minAngle) {targetAngle = minAngle;} 
     }
 }
