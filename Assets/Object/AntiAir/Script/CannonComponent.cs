@@ -31,21 +31,13 @@ public class CannonComponent : MonoBehaviour
             float rotationThisFrame = rotationSpeed * Time.deltaTime * rotationDirection;
 
             transform.Rotate(0, 0, rotationThisFrame);
+            if (transform.rotation.eulerAngles.z <= targetAngle + 0.1 && transform.rotation.eulerAngles.z >= targetAngle - 0.1)
 
-            if (transform.rotation.eulerAngles.z <= targetAngle && transform.rotation.eulerAngles.z >= targetAngle)
             {
                 needRotate = false;
             }
         }
     }
-    
-    private float CalculateTan(Vector3 point1, Vector3 point2)
-    {
-        float deltaX = Math.Abs(point2.x - point1.x);
-        float deltaY = Math.Abs(point2.y - point1.y);
-        return deltaY/deltaX;
-    }
-
     public void TargetTo(Vector3 coordinate)
     {
         needRotate = true;
@@ -56,8 +48,8 @@ public class CannonComponent : MonoBehaviour
 
 
 
-        //if (targetAngle > maxAngle) {targetAngle = maxAngle;}
-        //if ( targetAngle < minAngle) {targetAngle = minAngle;} 
+        if (targetAngle > maxAngle) {targetAngle = maxAngle;}
+        if ( targetAngle < minAngle) {targetAngle = minAngle;} 
 
         //targetAngle -= targetAngle / 5.0f;
         Debug.Log(targetAngle);
