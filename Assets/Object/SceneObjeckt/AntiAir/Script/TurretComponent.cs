@@ -49,4 +49,13 @@ public class TurretComponent : MonoBehaviour
         needRotate = true;
         cannonComponent.TargetTo(coordinate);
     }
+
+    public void GetTurretSpeedRotation(String s){
+        if(s==""){s="0";}
+        rotationSpeed=float.Parse(s);
+    }
+    public void GetTurretRotation(String s){
+        if(s==""){s="0";}
+        transform.Rotate(0, float.Parse(s), 0);
+    }
 }

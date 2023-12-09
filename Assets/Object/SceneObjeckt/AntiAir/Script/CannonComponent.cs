@@ -51,8 +51,14 @@ public class CannonComponent : MonoBehaviour
         if (targetAngle > maxAngle) {targetAngle = maxAngle;}
         if ( targetAngle < minAngle) {targetAngle = minAngle;} 
 
-        //targetAngle -= targetAngle / 5.0f;
-        Debug.Log(targetAngle);
+    }
 
+    public void GetCannonSpeedRotation(String s){
+         if(s==""){s="0";}
+        rotationSpeed=float.Parse(s);
+    }
+    public void GetCannonRotation(String s){
+         if(s==""){s="0";}
+        transform.Rotate(0f, 0f, float.Parse(s));
     }
 }

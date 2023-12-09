@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class AirResistance : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool UseAirResistance = false ;
     public float radius=0f;
     public float DynamicViscosityOfLiquid=0.0000163f;
 
@@ -13,10 +13,10 @@ public class AirResistance : MonoBehaviour
         return target_direction*18.85f*DynamicViscosityOfLiquid*radius*target_speed;
     }
 
-    private void Start()
-    {
-        if(UseAirResistance==false){
-            DynamicViscosityOfLiquid=0;
-        }
+    public void GetDynamicViscosityOfLiquid(String s){
+         if(s==""){s="0";}
+        DynamicViscosityOfLiquid=float.Parse(s);
     }
+
+
 }

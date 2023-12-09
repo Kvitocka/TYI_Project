@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,26 @@ public class linear_movement : MonoBehaviour
         transform.Translate((target_direction * target_speed / 50)-AirResistance.CalkulateAirResistance(target_direction,target_speed));
         target_speed += target_acceleration/50;
     }
+
+    public void SetSpeed(String s){
+        if(s==""){s="0";}
+        target_speed=float.Parse(s);
+        }
+    public void SetSpeedX(String s){
+        if(s==""){s="0";}
+        target_direction.x = float.Parse(s);
+    }
+    public void SetSpeedY(String s){
+        if(s==""){s="0";}
+        target_direction.y = float.Parse(s);
+    }
+    public void SetSpeedZ(String s){
+        if(s==""){s="0";}
+        target_direction.z = float.Parse(s);
+    }
+    public void SetAcceleration(String s){
+        if(s==""){s="0";}
+        target_acceleration=float.Parse(s);
+        }
 
 }
