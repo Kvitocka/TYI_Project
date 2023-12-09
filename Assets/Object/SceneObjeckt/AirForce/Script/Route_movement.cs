@@ -64,23 +64,22 @@ public class Route_movement : MonoBehaviour
         pointIsOrNor();
     }
     public void addPoins (){
-          pointList.Add(AddNewPoint);
+        pointList.Add(AddNewPoint);
 
-          GameObject bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
-          AddNewPoint=new Vector3(0,0,0);
+        bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
           
-          pointIs=false;
     }
 
     public void pointIsOrNor (){
 
           if(!pointIs){
-            GameObject bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
+            bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
             pointIs=true;
             }
             else{
                 bullet.transform.position=AddNewPoint;
             }
+            
     }
 
 
