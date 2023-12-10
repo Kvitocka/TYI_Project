@@ -60,26 +60,25 @@ public class Route_movement : MonoBehaviour
     }
     public void visualRouteMoveCordZ (String s){
         if(s==""){s="0";}
-        AddNewPoint.x=float.Parse(s);
+        AddNewPoint.z=float.Parse(s);
         pointIsOrNor();
     }
     public void addPoins (){
         pointList.Add(AddNewPoint);
 
-        bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
-          
+        bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());  
     }
 
     public void pointIsOrNor (){
 
-          if(!pointIs){
+            if(!pointIs){
             bullet = Instantiate(PointPrefab, AddNewPoint,new Quaternion());
             pointIs=true;
             }
             else{
                 bullet.transform.position=AddNewPoint;
             }
-            
+
     }
 
 

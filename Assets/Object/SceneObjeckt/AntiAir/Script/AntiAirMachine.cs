@@ -9,6 +9,8 @@ public class AntiAirMachine : MonoBehaviour
 {
     [SerializeField] private String trackedObjectsTag;
 
+    public See see;
+
     private TurretComponent turretComponent;
 
     private List<GameObject> collideObjects;
@@ -36,7 +38,7 @@ public class AntiAirMachine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(trackedObjectsTag))
+        if (other.CompareTag(trackedObjectsTag) && see.CanISee(other))
         {
             needToTrack = true;
             collideObjects.Add(other.gameObject);
