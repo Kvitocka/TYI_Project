@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Aimer: {fileID: 3858346788870101029}
   bulletPrefab: {fileID: 3627302021964877169, guid: a49c86a4bf5eac147878b1c485c0f5a2, type: 3}
+  spendStatistic: {fileID: 0}
   bulletSpeed: 10
   reloadTime: 5
   MasOil: 5

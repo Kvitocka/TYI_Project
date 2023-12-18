@@ -6,22 +6,20 @@ public class bullet_class : MonoBehaviour
 {
     public Transform Aimer;
     public GameObject bulletPrefab;
+    public static Action OnTach;
     public float bulletSpeed = 10f;
     public float reloadTime = 5f;
     private bool isReloading = false;
-
     public float MasOil = 5f;
-
     public float SpendOil = 5f;
-
     public float MasCorps = 5f;
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !isReloading)
         {
             Shoot();
             StartCoroutine(Reload());
+            OnTach?.Invoke();
         }
     }
 
