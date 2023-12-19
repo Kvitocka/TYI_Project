@@ -1801,7 +1801,7 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 726594478}
         m_TargetAssemblyTypeName: AddPrefabToCanvas, Assembly-CSharp
         m_MethodName: AddPrefabToCanvasObject
         m_Mode: 1
@@ -4640,6 +4640,7 @@ GameObject:
   - component: {fileID: 726594475}
   - component: {fileID: 726594477}
   - component: {fileID: 726594476}
+  - component: {fileID: 726594478}
   m_Layer: 5
   m_Name: List
   m_TagString: Untagged
@@ -4708,6 +4709,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &726594478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726594474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4b61aa409985a4cab845c25adeaf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToInstantiate: {fileID: 7791343981018993300, guid: 5ea82a4fd36a5be40b1f13d335ea7b6e, type: 3}
+  Lokaction: {fileID: 1585903667}
+  ChildName: AntiAirSystem
 --- !u!1 &729872386
 GameObject:
   m_ObjectHideFlags: 0
