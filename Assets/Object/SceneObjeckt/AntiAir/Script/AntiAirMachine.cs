@@ -19,6 +19,7 @@ public class AntiAirMachine : MonoBehaviour
     private void Awake()
     {
         turretComponent = GetComponentInChildren<TurretComponent>();
+        
     }
 
     void Start()
