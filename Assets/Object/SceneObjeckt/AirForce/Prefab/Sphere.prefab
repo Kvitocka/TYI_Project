@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_direction: {x: 1, y: 0, z: 0}
-  target_speed: 10
-  target_acceleration: 5
+  target_speed: 0
+  target_acceleration: 0
   AirResistance: {fileID: 2273923780792795938}
 --- !u!114 &8810450645515459180
 MonoBehaviour:
@@ -138,7 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bc4c9521beed54d96c063cb7282cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityValue: -5
   MassCorps: 10
   MassOil: 10
   SpendOilForSecond: 0
