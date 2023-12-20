@@ -7,8 +7,8 @@ public class bullet_class : MonoBehaviour
     public Transform Aimer;
     public GameObject bulletPrefab;
     public static Action OnTach;
-    public float bulletSpeed = 10f;
-    public float reloadTime = 5f;
+    public float bulletSpeed = 100f;
+    public float reloadTime = 0.1f;
     private bool isReloading = false;
     public float MasOil = 5f;
     public float SpendOil = 5f;

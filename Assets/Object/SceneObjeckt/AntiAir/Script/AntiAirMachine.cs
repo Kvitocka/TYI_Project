@@ -13,8 +13,10 @@ public class AntiAirMachine : MonoBehaviour
 
     private TurretComponent turretComponent;
 
-    private List<GameObject> collideObjects;
+    public List<GameObject> collideObjects;
     private bool needToTrack;
+    public AimSystem aimSystem;
+    public Transform Connection;
 
     private void Awake()
     {

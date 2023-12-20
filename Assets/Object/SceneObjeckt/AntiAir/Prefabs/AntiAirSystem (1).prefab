@@ -145,7 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Aimer: {fileID: 3858346788870101029}
   bulletPrefab: {fileID: 3627302021964877169, guid: a49c86a4bf5eac147878b1c485c0f5a2, type: 3}
-  spendStatistic: {fileID: 0}
   bulletSpeed: 10
   reloadTime: 5
   MasOil: 5
@@ -356,7 +355,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.89, z: 13.59}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3282882275510267253}
@@ -398,6 +397,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackedObjectsTag: Target
   see: {fileID: 2695183368032546129}
+  collideObjects: []
+  aimSystem: {fileID: 0}
+  Connection: {fileID: 0}
 --- !u!1 &8878592827183951051
 GameObject:
   m_ObjectHideFlags: 0
