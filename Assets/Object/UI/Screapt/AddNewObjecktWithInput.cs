@@ -12,4 +12,13 @@ public class AddPrefabToCanvas : MonoBehaviour
             obj.transform.Find(ChildName).SetParent(Lokaction);
             obj.transform.SetParent(transform);
     }
+
+    public void AddPrefabToCanvasObject(Vector3 SpawnPosition)
+    {
+            GameObject obj = Instantiate(prefabToInstantiate, SpawnPosition, Quaternion.identity);
+            obj.transform.Find(ChildName).SetParent(Lokaction);
+            obj.transform.SetParent(transform);
+            obj.transform.position=SpawnPosition;
+            Debug.Log(obj.transform.position);
+    }
 }
