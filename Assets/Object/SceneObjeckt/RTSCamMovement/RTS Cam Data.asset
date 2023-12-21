@@ -15,8 +15,8 @@ MonoBehaviour:
   movementSpeed: 5
   rotationSpeed: 50
   screenBorderPx: 50
-  minBorder: {x: -50, y: 0, z: -200}
-  maxBorder: {x: 200, y: 0, z: 200}
+  minBorder: {x: -2000, y: 0, z: -2000}
+  maxBorder: {x: 2000, y: 0, z: 2000}
   minZoomBorder: {x: 0, y: 2, z: -100}
   maxZoomBorder: {x: 0, y: 100, z: -2}
   zoomAmount: 2

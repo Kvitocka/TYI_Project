@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class linear_movement : MonoBehaviour
@@ -14,11 +15,15 @@ public class linear_movement : MonoBehaviour
 
     public AirResistance AirResistance;
 
+    private Rigidbody rb;
+
     private void Start()
     {
         MakeCorrectSpeed();
         MakeCorrectAcceleration();
-    }
+
+        rb= GetComponent<Rigidbody>();
+         }
     void FixedUpdate()
     { //target_direction*18.85f*DynamicViscosityOfLiquid*radius calculate Air resistance
         transform.Translate((target_direction * target_speed / 50)-AirResistance.CalkulateAirResistance(target_direction,target_speed));
@@ -37,36 +42,46 @@ public class linear_movement : MonoBehaviour
       //  {target_acceleration=(float)(notCorectacceleration/(Math.Sqrt(target_direction.x*target_direction.x+target_direction.y*target_direction.y+target_direction.z*target_direction.z)));}
     }
 
+     public void AddSpeed(){
+       rb.AddForce(target_direction*target_speed-AirResistance.CalkulateAirResistance(target_direction,target_speed),ForceMode.VelocityChange);
+        }
+
+         public void AddAseleration(){
+        rb.AddForce(target_direction*target_acceleration,ForceMode.Acceleration);
+   }
+
     public void SetSpeed(String s){
         if(s==""){s="0";}
         target_speed=float.Parse(s);
-        notCorectSpeed=target_speed;
-        MakeCorrectSpeed();
+        
+        AddSpeed();
         }
     public void SetSpeedX(String s){
         if(s==""){s="0";}
         target_direction.x = float.Parse(s);
-        MakeCorrectSpeed();
-        MakeCorrectAcceleration();
+        
+        AddAseleration();
+        AddSpeed();
     }
     public void SetSpeedY(String s){
         if(s==""){s="0";}
         target_direction.y = float.Parse(s);
-        MakeCorrectSpeed();
-        MakeCorrectAcceleration();
+        
+        AddAseleration();
+        AddSpeed();
     }
     public void SetSpeedZ(String s){
         if(s==""){s="0";}
         target_direction.z = float.Parse(s);
-        MakeCorrectSpeed();
-        MakeCorrectAcceleration();
-
+        
+        AddAseleration();
+        AddSpeed();
     }
     public void SetAcceleration(String s){
         if(s==""){s="0";}
         target_acceleration=float.Parse(s);
-        notCorectacceleration=target_acceleration;
-        MakeCorrectAcceleration();
-        }
+        
+        AddAseleration();
+    }
 
 }
