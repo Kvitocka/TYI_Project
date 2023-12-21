@@ -25,7 +25,7 @@ private void Update()
 }
 
 public void MakeObjecktInPosition(AddPrefabToCanvas addPrefabToCanvas){
-    if(MausPositionInMap!=null){
+    if(MausPositionInMap!= new Vector3(0,0,0)){
     addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap);
     }
 }

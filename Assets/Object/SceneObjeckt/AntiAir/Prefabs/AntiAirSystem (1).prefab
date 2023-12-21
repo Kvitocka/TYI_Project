@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 3264270419721209847}
   - component: {fileID: 4905401420414920276}
   - component: {fileID: 6749340955311734379}
+  - component: {fileID: 3227833958129288038}
   m_Layer: 0
   m_Name: AntiAirSystem (1)
   m_TagString: Target
@@ -399,7 +400,19 @@ MonoBehaviour:
   see: {fileID: 2695183368032546129}
   collideObjects: []
   aimSystem: {fileID: 0}
-  Connection: {fileID: 0}
+  Connection: {fileID: 2421070189103289190}
+--- !u!114 &3227833958129288038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236939003772152534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5c724e2230ded4e881b7259eb21914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8878592827183951051
 GameObject:
   m_ObjectHideFlags: 0
