@@ -1,3 +1,4 @@
+using Michsky.MUIP;
 using UnityEngine;
 
 namespace Fade.RTS.Movement
@@ -57,26 +58,8 @@ namespace Fade.RTS.Movement
             if (Input.GetKey(KeyCode.A) || Input.mousePosition.x <= rTSCamData.screenBorderPx) pos -= speed * Time.deltaTime * transform.right;
             if (Input.GetKey(KeyCode.D) || Input.mousePosition.x >= Screen.width - rTSCamData.screenBorderPx) pos += speed * Time.deltaTime * transform.right;
 
-            //Movement with slide
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (plane.Raycast(ray, out float entry))
-                {
-                    startPos = ray.GetPoint(entry);
-                }
-            }
 
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                if (plane.Raycast(ray, out float entry))
-                {
-                    currentPos = ray.GetPoint(entry);
-                    pos += startPos - currentPos;
 
-                }
-            }
             //Clamp Camera position between min and max(map area) border.
             pos.x = Mathf.Clamp(pos.x, rTSCamData.minBorder.x, rTSCamData.maxBorder.x);
             pos.y = Mathf.Clamp(pos.y, rTSCamData.minBorder.y, rTSCamData.maxBorder.y);

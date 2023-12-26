@@ -18,8 +18,6 @@ public class bullet_class : MonoBehaviour
         //if (Input.GetMouseButtonDown(0) && !isReloading)
         //{
         //    Shoot();
-        //    StartCoroutine(Reload());
-        //    OnTach?.Invoke();
         //}
     }
 
@@ -37,6 +35,9 @@ public class bullet_class : MonoBehaviour
         controlMas.SpendOilForSecond=SpendOil;
     
         bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
+
+        StartCoroutine(Reload());
+        OnTach?.Invoke();
 
     }
     IEnumerator Reload()

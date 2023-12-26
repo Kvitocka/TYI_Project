@@ -11,20 +11,17 @@ public class TurretComponent : MonoBehaviour
 
     private bool needRotate;
     private Vector3 targetPosition;
-
-    private void Awake()
-    {
-        cannonComponent = GetComponentInChildren<CannonComponent>();
-    }
+    private bool WosStart = false;
 
     void Start()
     {
+        cannonComponent = GetComponentInChildren<CannonComponent>();
         needRotate = false;
     }
 
     void Update()
     {
-        if (needRotate)
+        if (needRotate && WosStart)
         {
             Vector3 direction = targetPosition - cannonComponent.transform.position;
             float angleInRad = Mathf.Atan2(direction.z, direction.x);
@@ -58,4 +55,20 @@ public class TurretComponent : MonoBehaviour
         if(s==""){s="0";}
         transform.Rotate(0, float.Parse(s), 0);
     }
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    public void StartGame()
+    {
+        WosStart=true;
+    }
+
 }

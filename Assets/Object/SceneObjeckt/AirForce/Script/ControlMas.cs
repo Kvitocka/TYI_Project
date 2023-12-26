@@ -15,29 +15,51 @@ public class ControlMas : MonoBehaviour
 
      public Rigidbody rb;
 
+    private bool WosStart=false;
+
     private void Start()
     {
     rb = GetComponent<Rigidbody>();   
     }
+
     private void FixedUpdate()
     {
-
-        SpendOilForframe = SpendOilForSecond/50;
-        if  (MassOil>0){
-            if(MassOil>SpendOilForframe){
-                MassOil-=SpendOilForframe;
-                rb.mass = MassCorps+MassOil;
+        if ( WosStart)
+        {
+            SpendOilForframe = SpendOilForSecond / 50;
+            if (MassOil > 0)
+            {
+                if (MassOil > SpendOilForframe)
+                {
+                    MassOil -= SpendOilForframe;
+                    rb.mass = MassCorps + MassOil;
                 }
-            if(MassOil<SpendOilForframe){
-                MassOil=0;
-                rb.mass = MassCorps+MassOil;
+                if (MassOil < SpendOilForframe)
+                {
+                    MassOil = 0;
+                    rb.mass = MassCorps + MassOil;
                 }
+            }
         }
     }
 
 
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
 
-   public void SetMasOil(String s){
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    private void StartGame()
+    {
+        WosStart = true;
+    }
+
+    public void SetMasOil(String s){
         if(s==""){s="0";}
         MassOil=float.Parse(s);
         }

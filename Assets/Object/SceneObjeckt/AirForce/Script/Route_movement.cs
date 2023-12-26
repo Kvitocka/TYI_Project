@@ -16,9 +16,9 @@ public class Route_movement : MonoBehaviour
     
     public GameObject PointPrefab;
 
-    GameObject bullet;
+    private GameObject bullet;
 
-
+    // ??? ????? ??? ?????????? 
 
     // Start is called before the first frame update
     void SStart()

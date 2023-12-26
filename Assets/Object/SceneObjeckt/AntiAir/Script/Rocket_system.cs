@@ -13,6 +13,8 @@ public class Rocket_system : MonoBehaviour
     public float reloadTime = 50f;
     public GameObject bulletPrefab;
 
+    private bool WosStart=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class Rocket_system : MonoBehaviour
 
     void Update()
     {
-        if(collideObjects.Count != 0 && Input.GetMouseButtonDown(0) && !isReloading)
+        if(collideObjects.Count != 0 && Input.GetMouseButtonDown(0) && !isReloading && WosStart)
         {
             GameObject rocket = Instantiate(bulletPrefab, transform.position, transform.rotation);
             Rigidbody bulletRb = rocket.GetComponent<Rigidbody>();
@@ -52,5 +54,20 @@ public class Rocket_system : MonoBehaviour
             collideObjects.Remove(other.gameObject);
         }
     }
-    
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    public void StartGame()
+    {
+        WosStart = true;
+    }
+
 }

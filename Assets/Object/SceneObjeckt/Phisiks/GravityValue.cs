@@ -5,12 +5,29 @@ using UnityEngine;
 
 public class GravityValue : MonoBehaviour
 {
-    void Start()
+    private Vector3 gravity = Vector3.zero;
+    private void Start()
     {
-        Physics.gravity = new Vector3(0, 0, 0);
+        Physics.gravity = Vector3.zero;
     }
-     public void SetGravity(String s){
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    private void StartGame()
+    {
+        Physics.gravity = gravity;
+    }
+
+        public void SetGravity(String s){
         if(s==""){s="0";}
-        Physics.gravity = new Vector3(0, float.Parse(s), 0);
+        gravity = new Vector3(0, float.Parse(s), 0);
     }
 }

@@ -14,6 +14,7 @@ public class CannonComponent : MonoBehaviour
 
     private bool needRotate;
     private float targetAngle;
+    private bool WosStart = false;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class CannonComponent : MonoBehaviour
 
     void Update()
     {
-        if (needRotate)
+        if (needRotate && WosStart)
         {
             float currentAngle = transform.rotation.eulerAngles.z;
             float angleDifference = targetAngle - currentAngle;
@@ -59,5 +60,20 @@ public class CannonComponent : MonoBehaviour
     public void GetCannonRotation(String s){
          if(s==""){s="0";}
         transform.Rotate(0f, 0f, float.Parse(s));
+    }
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    public void StartGame()
+    {
+        WosStart = true;
     }
 }

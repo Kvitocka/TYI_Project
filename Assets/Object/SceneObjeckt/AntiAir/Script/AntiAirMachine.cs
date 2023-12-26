@@ -18,21 +18,19 @@ public class AntiAirMachine : MonoBehaviour
     public AimSystem aimSystem;
     public Transform Connection;
 
-    private void Awake()
-    {
-        turretComponent = GetComponentInChildren<TurretComponent>();
-        
-    }
+    private bool WosStart = false;
+
 
     void Start()
     {
+        turretComponent = GetComponentInChildren<TurretComponent>();
         collideObjects = new List<GameObject>();
         needToTrack = false;
     }
 
     void Update()
     {
-        if (needToTrack && collideObjects.Count > 0)
+        if (needToTrack && collideObjects.Count > 0 && WosStart)
         {
             GameObject collideObject = collideObjects[0];
             turretComponent.TargetTo(collideObject.transform.position);
@@ -59,5 +57,20 @@ public class AntiAirMachine : MonoBehaviour
                 needToTrack = false;
             }
         }
+    }
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    public void StartGame()
+    {
+        WosStart = true;
     }
 }

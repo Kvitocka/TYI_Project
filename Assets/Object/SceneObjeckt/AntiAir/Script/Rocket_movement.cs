@@ -12,14 +12,18 @@ public class Rocket_movement : MonoBehaviour
 
     public List<GameObject> collideObjects;  
 
+    private bool WosStart=false;
+
 
     public void Update()
     {
-        GameObject collideObject = collideObjects[0];
-        Vector3 targetVector = collideObject.transform.position - transform.position;
+        if (WosStart) {
+            GameObject collideObject = collideObjects[0];
+            Vector3 targetVector = collideObject.transform.position - transform.position;
 
-        transform.Translate(targetVector * speed * Time.deltaTime);
-        speed += acceleration;
+            transform.Translate(targetVector * speed * Time.deltaTime);
+            speed += acceleration;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,5 +40,22 @@ public class Rocket_movement : MonoBehaviour
         {
             collideObjects.Remove(other.gameObject);
         }
-    }        
+    }
+
+    public void OnEnable()
+    {
+        StartSimulation.TapStart += StartGame;
+    }
+
+    public void OnDisable()
+    {
+        StartSimulation.TapStart -= StartGame;
+    }
+
+    public void StartGame()
+    {
+        WosStart=true;
+    }
+
+    
 }
