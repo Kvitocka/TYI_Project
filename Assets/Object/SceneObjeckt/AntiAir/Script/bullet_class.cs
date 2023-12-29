@@ -15,10 +15,10 @@ public class bullet_class : MonoBehaviour
     public float MasCorps = 5f;
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0) && !isReloading)
-        //{
-        //    Shoot();
-        //}
+        if (!isReloading)
+        {
+           Shoot();
+        }
     }
 
     void Shoot()

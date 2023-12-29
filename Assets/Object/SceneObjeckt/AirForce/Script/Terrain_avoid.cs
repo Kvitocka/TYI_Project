@@ -27,7 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Terrain") || other.CompareTag("bullet"))
+        if(other.CompareTag("Terrain"))
         {
             collideObjects.Add(other.gameObject);
         }
@@ -35,7 +35,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Terrain") || other.CompareTag("bullet"))
+        if(other.CompareTag("Terrain"))
         {
             collideObjects.Remove(other.gameObject);
         } 

@@ -8,10 +8,10 @@ using UnityEngine;
 public class linear_movement : MonoBehaviour
 {
     public Vector3 target_direction = new Vector3(0.0f, 0.0f, 0.0f);
-    private float notCorectSpeed=0f;
-    private float notCorectAcceleration=0f;
-    public float target_speed = 0.0f;
-    public float target_acceleration = 0.0f;
+    public float notCorectSpeed=0f;
+    public float notCorectAcceleration=0f;
+    private float target_speed = 20.0f;
+    private float target_acceleration = 0.0f;
 
     public AirResistance AirResistance;
 

@@ -13,6 +13,11 @@ public class StartSimulation : MonoBehaviour
 
     public GameObject AfterCanvas;
 
+    void Start()
+    {
+        TapStart?.Invoke();
+    }
+
     public void BeginSimulatuon() {
         TapStart?.Invoke();
 

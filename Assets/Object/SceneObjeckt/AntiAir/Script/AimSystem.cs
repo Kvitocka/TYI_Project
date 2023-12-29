@@ -28,9 +28,7 @@ public class AimSystem : MonoBehaviour
         float d = (Xr*Voz-Zr*Vox)/Xr;
 
         float root = MathF.Sqrt(BulletSpeed*BulletSpeed*(1+a*a+c*c) - MathF.Pow((b*c-a*d),2) - b*b - d*d);
-        Debug.Log("root="+root);
         if(root < 0){
-            Debug.Log("Hell");
             return coordinate;
         }
 
@@ -73,9 +71,8 @@ public class AimSystem : MonoBehaviour
         float Vpy = a*Vpx+b;
         float Vpz = c*Vpx+d;
 
-
+        Debug.Log(new Vector3(Vpx,Vpy,Vpz));
         oldPosition = newPosition;
-        Debug.Log("Final="+new Vector3(Vpx,Vpy,Vpz));
         return new Vector3(Vpx,Vpy,Vpz);
     }
 }
