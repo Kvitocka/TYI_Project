@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Specialized;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,35 +8,74 @@ public class AimSystem : MonoBehaviour
 {
     private Vector3 oldPosition= new Vector3(0,0,0);
     private float BulletSpeed = 100f;
-    private float TargetSpeed = 10f;
 
+    private float Vpx;
     public Vector3 coord(Vector3 coordinate, Vector3 myPosition)
     {
-        Vector3 actualPosition = coordinate;
-        Vector3 targetVector = actualPosition - oldPosition;
+        Vector3 newPosition = coordinate;
 
-        for(int i=0;i<111;i++)
-        {
-            float targetDistance = Vector3.Distance(actualPosition, myPosition);
-            Debug.Log(actualPosition+ "-"+ myPosition);
+        float Xr = coordinate.x - myPosition.x;
+        float Yr = coordinate.y - myPosition.y;
+        float Zr = coordinate.z - myPosition.z;
 
+        float Vox = newPosition.x - oldPosition.x;
+        float Voy = newPosition.y - oldPosition.y;
+        float Voz = newPosition.z - oldPosition.z;
 
-            float time = targetDistance/BulletSpeed;
+        float a = Xr/Yr;
+        float b = (Xr*Voy-Yr*Vox)/Xr;
+        float c = Zr/Xr;
+        float d = (Xr*Voz-Zr*Vox)/Xr;
 
-            Vector3 nextPosition = actualPosition + (targetVector * TargetSpeed * time);
-
-            float targetPath = Vector3.Distance(nextPosition, actualPosition);
-            float bulletPath = Vector3.Distance(nextPosition, myPosition);
-
-            if(targetPath/TargetSpeed >= 0.8*bulletPath/BulletSpeed && targetPath/TargetSpeed <= 1.2*bulletPath/BulletSpeed)
-            {
-                
-                return nextPosition;
-            }
-            actualPosition = nextPosition;
-
+        float root = MathF.Sqrt(BulletSpeed*BulletSpeed*(1+a*a+c*c) - MathF.Pow((b*c-a*d),2) - b*b - d*d);
+        Debug.Log("root="+root);
+        if(root < 0){
+            Debug.Log("Hell");
+            return coordinate;
         }
-        oldPosition = actualPosition;
-        return new Vector3(0,0,0);
+
+        float Vpx1 = (-(a*b+c*d) + root)/(1+a*a+c*c);
+        float Vpx2 = (-(a*b+c*d) - root)/(1+a*a+c*c);
+        
+        if(MathF.Abs(Vpx1) > BulletSpeed){
+            Vpx1 = 0;
+        }
+        if(MathF.Abs(Vpx2) > BulletSpeed){
+            Vpx2 = 0;
+        }
+
+        if(Xr <0 && Vpx1 >0){
+            Vpx1 = 0;
+        }
+        if(Xr >0 && Vpx1 <0){
+            Vpx1 = 0;
+        }
+
+        if(Xr <0 && Vpx2 >0){
+            Vpx2 = 0;
+        }
+        if(Xr >0 && Vpx2 <0){
+            Vpx2 = 0;
+        }
+
+        if(Vpx1 == 0f && Vpx2 == 0f){
+            return coordinate;
+        }
+        
+
+        if(Vpx1 == 0){
+            Vpx = Vpx2;
+        }
+        else{
+            Vpx = Vpx1;
+        }
+
+        float Vpy = a*Vpx+b;
+        float Vpz = c*Vpx+d;
+
+
+        oldPosition = newPosition;
+        Debug.Log("Final="+new Vector3(Vpx,Vpy,Vpz));
+        return new Vector3(Vpx,Vpy,Vpz);
     }
 }
