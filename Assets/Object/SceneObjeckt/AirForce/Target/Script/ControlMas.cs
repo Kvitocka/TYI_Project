@@ -32,13 +32,17 @@ public class ControlMas : MonoBehaviour
                 if (MassOil > SpendOilForframe)
                 {
                     MassOil -= SpendOilForframe;
-                    rb.mass = MassCorps + MassOil;
+
+                    if (rb!=null) { rb.mass = MassCorps + MassOil; }
+                    
                 }
                 if (MassOil < SpendOilForframe)
                 {
                     MassOil = 0;
-                    rb.mass = MassCorps + MassOil;
-                }
+                    if (rb != null)
+                    { rb.mass = MassCorps; }
+
+                    }
             }
         }
     }

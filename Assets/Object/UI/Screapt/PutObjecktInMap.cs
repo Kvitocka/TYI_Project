@@ -24,10 +24,31 @@ private void Update()
    
 }
 
-public void MakeObjecktInPosition(AddPrefabToCanvas addPrefabToCanvas){
-    if(MausPositionInMap!= new Vector3(0,0,0)){
-    addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap);
+    public void AddTarget(AddPrefabToCanvas addPrefabToCanvas )
+    {
+        if (MausPositionInMap != new Vector3(0, 0, 0))
+        {
+            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap,0, "Target");
+        }
     }
-}
+    public void AddTargetToPoint(AddPrefabToCanvas addPrefabToCanvas)
+    {
+        if (MausPositionInMap != new Vector3(0, 0, 0))
+        {
+            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap,1, "TargetToPoints");
+        }
+    }
+
+    public void AddAASystem(AddPrefabToCanvas addPrefabToCanvas)
+    {
+        if (MausPositionInMap != new Vector3(0, 0, 0))
+        {
+            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap, 0, "AntiAirSystem");
+        }
+    }
+
+
+
+
 
 }
