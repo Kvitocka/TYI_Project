@@ -44,8 +44,10 @@ public class linear_movement : MonoBehaviour
 
     private void MakeCorrectParameters()
     {
-       target_speed=notCorectSpeed/Vector3.Distance(new Vector3(0f,0f,0f), target_direction);
-       target_acceleration = notCorectAcceleration / Vector3.Distance(new Vector3(0f, 0f, 0f), target_direction);
+       target_speed=notCorectSpeed;
+       ///Vector3.Distance(new Vector3(0f,0f,0f), target_direction);
+       target_acceleration = notCorectAcceleration;
+       // / Vector3.Distance(new Vector3(0f, 0f, 0f), target_direction);
     }
 
     public void SetSpeed(String s){
