@@ -18,6 +18,7 @@ public class bullet_class : MonoBehaviour
         if (!isReloading)
         {
            Shoot();
+           StartCoroutine(Reload());
         }
     }
 
@@ -36,7 +37,6 @@ public class bullet_class : MonoBehaviour
     
         bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
 
-        StartCoroutine(Reload());
         OnTach?.Invoke();
 
     }
