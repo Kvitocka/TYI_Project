@@ -16,9 +16,8 @@ public class bullet_class : MonoBehaviour
 
     public void Shoot()
     {
-        if(!isReloading){
-            GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
-
+        if (!isReloading)
+        {
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
             ControlMas controlMas = bullet.GetComponent<ControlMas>();
@@ -29,11 +28,13 @@ public class bullet_class : MonoBehaviour
             controlMas.SpendOilForSecond=SpendOil;
         
             bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
-
+            
             StartCoroutine(Reload());
             OnTach?.Invoke();
         }
-    }
+    }   
+
+
     IEnumerator Reload()
     {
         isReloading = true;
