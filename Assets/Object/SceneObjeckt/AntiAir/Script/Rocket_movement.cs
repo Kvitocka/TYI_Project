@@ -12,7 +12,7 @@ public class Rocket_movement : MonoBehaviour
 
     public List<GameObject> collideObjects;  
 
-    private bool WosStart=false;
+    private bool WosStart=true;
 
 
     public void Update()

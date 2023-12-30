@@ -14,13 +14,6 @@ public class Rocket_system : MonoBehaviour
     public GameObject bulletPrefab;
 
     private bool WosStart=false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        collideObjects = new List<GameObject>();
-    }
-
     void Update()
     {
         if(collideObjects.Count != 0 && Input.GetMouseButtonDown(0) && !isReloading && WosStart)
