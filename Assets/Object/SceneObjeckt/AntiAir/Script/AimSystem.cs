@@ -75,7 +75,6 @@ public class AimSystem : MonoBehaviour
         float Vpy = a*Vpx+b;
         float Vpz = c*Vpx+d;
 
-        Debug.Log(new Vector3(Vpx,Vpy,Vpz));
         oldPosition = newPosition;
         return new Vector3(Vpx,Vpy,Vpz);
     }

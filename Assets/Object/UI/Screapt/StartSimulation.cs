@@ -13,18 +13,22 @@ public class StartSimulation : MonoBehaviour
 
     public GameObject AfterCanvas;
 
+    public bool startAlredy = false;
+
     void Start()
     {
-        TapStart?.Invoke();
+        if (startAlredy) { TapStart?.Invoke(); }
     }
 
-    public void BeginSimulatuon() {
+    public void BeginSimulatuon()
+    {
         TapStart?.Invoke();
 
         Invoke("changeScene", 0.02f);
     }
 
-    private void changeScene() {
+    private void changeScene()
+    {
         BeforeCanvas.SetActive(false);
         AfterCanvas.SetActive(true);
     }
