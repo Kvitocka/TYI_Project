@@ -18,9 +18,9 @@ public class bullet_class : MonoBehaviour
     {
         if (!isReloading)
         {
-            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+            Rigidbody bulletRb = bulletPrefab.GetComponent<Rigidbody>();
 
-            ControlMas controlMas = bullet.GetComponent<ControlMas>();
+            ControlMas controlMas = bulletPrefab.GetComponent<ControlMas>();
             
 
             controlMas.MassCorps=MasCorps;
