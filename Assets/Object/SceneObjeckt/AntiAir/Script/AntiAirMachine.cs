@@ -40,7 +40,7 @@ public class AntiAirMachine : MonoBehaviour
         if (needToTrack && collideObjects.Count > 0 && WosStart)
         {
             GameObject collideObject = collideObjects[0];
-            Vector3 point = aimSystem.coord(collideObject.transform.position, Connection.transform.position);
+            Vector3 point = aimSystem.coord(collideObject.transform.position, Connection.transform.position , collideObject.GetComponent<linear_movement>().target_direction, collideObject.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
             turretComponent.TargetTo(point);
             bullet_class.Shoot();
         }
