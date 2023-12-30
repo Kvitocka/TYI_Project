@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,6 +19,9 @@ public class AntiAirMachine : MonoBehaviour
     public bullet_class bullet_class;
     public Transform Connection;
 
+    private GameObject OldTarget;
+    private int oldTargetCode=-1;
+
     private bool WosStart = false;
 
 
@@ -27,6 +30,9 @@ public class AntiAirMachine : MonoBehaviour
         turretComponent = GetComponentInChildren<TurretComponent>();
         collideObjects = new List<GameObject>();
         needToTrack = false;
+        OldTarget = new GameObject();
+        OldTarget.AddComponent<CauntHunter>();
+
     }
 
     void Update()
@@ -76,4 +82,45 @@ public class AntiAirMachine : MonoBehaviour
     {
         WosStart = true;
     }
+
+    public int NumberOfCollider(List<GameObject> colider)
+    {
+        int Namber = 0;
+        int minHunter = int.MaxValue;
+
+        for (int i = 0; i < colider.Count; i++)
+        {
+            CauntHunter cauntHunter = colider[i].gameObject.GetComponent<CauntHunter>();
+            if (cauntHunter.caunt < minHunter)
+            {
+                minHunter = cauntHunter.caunt;
+               
+            }
+        }
+
+        for (int i = 0; i < colider.Count; i++)
+        {
+            CauntHunter cauntHunter = colider[i].gameObject.GetComponent<CauntHunter>();
+            if (cauntHunter.caunt < minHunter)
+            {
+                minHunter = cauntHunter.caunt;
+                Namber = i;
+            }
+        }
+
+        if (oldTargetCode != colider[Namber].GetComponent<CauntHunter>().myCod)
+        {
+            Debug.Log("rere");
+            colider[Namber].gameObject.GetComponent<CauntHunter>().addCaunt();
+            OldTarget.gameObject.GetComponent<CauntHunter>().minusCaunt();
+        }
+
+        OldTarget = colider[Namber].gameObject;
+        oldTargetCode = colider[Namber].GetComponent<CauntHunter>().myCod;
+
+        return Namber;
+    }
+
+
+
 }
