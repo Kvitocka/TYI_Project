@@ -8,7 +8,7 @@ public class GravityValue : MonoBehaviour
     private Vector3 gravity = Vector3.zero;
     private void Start()
     {
-        Physics.gravity = Vector3.zero;
+        Physics.gravity = new Vector3(0,0,0);
     }
 
     public void OnEnable()

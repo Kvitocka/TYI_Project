@@ -1,3 +1,4 @@
+using System.Xml.Schema;
 using System;
 using System.Collections.Specialized;
 using System.Collections;
@@ -7,22 +8,25 @@ using UnityEngine;
 public class AimSystem : MonoBehaviour
 {
     private Vector3 oldPosition= new Vector3(0,0,0);
-    private float BulletSpeed = 100f;
+    private float BulletSpeed = 1000f;
+    private float TargetSpeed = 20f;
+    private Vector3 TargetVector = new Vector3(1,1,-1);
 
     private float Vpx;
     public Vector3 coord(Vector3 coordinate, Vector3 myPosition)
     {
+        float Vpov = MathF.Sqrt(TargetVector.x*TargetVector.x + TargetVector.y*TargetVector.y+TargetVector.z*TargetVector.z);
         Vector3 newPosition = coordinate;
 
         float Xr = coordinate.x - myPosition.x;
         float Yr = coordinate.y - myPosition.y;
         float Zr = coordinate.z - myPosition.z;
 
-        float Vox = newPosition.x - oldPosition.x;
-        float Voy = newPosition.y - oldPosition.y;
-        float Voz = newPosition.z - oldPosition.z;
+        float Vox = TargetSpeed*TargetVector.x/Vpov;
+        float Voy = TargetSpeed*TargetVector.y/Vpov;
+        float Voz = TargetSpeed*TargetVector.z/Vpov;
 
-        float a = Xr/Yr;
+        float a = Yr/Xr;
         float b = (Xr*Voy-Yr*Vox)/Xr;
         float c = Zr/Xr;
         float d = (Xr*Voz-Zr*Vox)/Xr;

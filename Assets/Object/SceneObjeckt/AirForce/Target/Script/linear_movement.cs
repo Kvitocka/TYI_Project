@@ -1,3 +1,4 @@
+using System.Xml.Schema;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,21 +34,25 @@ public class linear_movement : MonoBehaviour
 
             rb = GetComponent<Rigidbody>();
 
-            MakeCorrectParameters();
-            
-            rb.AddForce(target_direction * target_speed - AirResistance.CalkulateAirResistance(target_direction, target_speed), ForceMode.VelocityChange);
-            Debug.Log(target_acceleration);
-            rb.AddForce(target_direction * target_acceleration, ForceMode.Acceleration);
+            //MakeCorrectParameters();
 
+            if(AirResistance == null){
+                rb.AddForce(target_direction * target_speed, ForceMode.VelocityChange);
+            }
+            else{
+                rb.AddForce(target_direction * target_speed - AirResistance.CalkulateAirResistance(target_direction, target_speed), ForceMode.VelocityChange);
+            }
+            rb.AddForce(target_direction * target_acceleration, ForceMode.Acceleration);
         }
     }
 
     private void MakeCorrectParameters()
     {
-       target_speed=notCorectSpeed;
-       ///Vector3.Distance(new Vector3(0f,0f,0f), target_direction);
-       target_acceleration = notCorectAcceleration;
-       // / Vector3.Distance(new Vector3(0f, 0f, 0f), target_direction);
+        float b = target_speed/MathF.Sqrt(target_direction.x*target_direction.x+target_direction.y*target_direction.y+target_direction.z*target_direction.z);
+       target_speed=b;
+
+       target_acceleration =0;
+
     }
 
     public void SetSpeed(String s){

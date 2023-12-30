@@ -7,38 +7,32 @@ public class bullet_class : MonoBehaviour
     public Transform Aimer;
     public GameObject bulletPrefab;
     public static Action OnTach;
-    public float bulletSpeed = 100f;
-    public float reloadTime = 2f;
+    public float bulletSpeed = 1000f;
+    public float reloadTime = 10f;
     private bool isReloading = false;
     public float MasOil = 5f;
     public float SpendOil = 5f;
     public float MasCorps = 5f;
-    void Update()
+
+    public void Shoot()
     {
-        if (!isReloading)
-        {
-           Shoot();
-        }
-    }
+        if(!isReloading){
+            GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
 
-    void Shoot()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, Aimer.position, Aimer.rotation);
+            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+            ControlMas controlMas = bullet.GetComponent<ControlMas>();
+            
 
-        ControlMas controlMas = bullet.GetComponent<ControlMas>();
+            controlMas.MassCorps=MasCorps;
+            controlMas.MassOil=MasOil;
+            controlMas.SpendOilForSecond=SpendOil;
         
+            bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
 
-        controlMas.MassCorps=MasCorps;
-        controlMas.MassOil=MasOil;
-        controlMas.SpendOilForSecond=SpendOil;
-    
-        bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
-
-        StartCoroutine(Reload());
-        OnTach?.Invoke();
-
+            StartCoroutine(Reload());
+            OnTach?.Invoke();
+        }
     }
     IEnumerator Reload()
     {
