@@ -30,8 +30,8 @@ public class AntiAirMachine : MonoBehaviour
         turretComponent = GetComponentInChildren<TurretComponent>();
         collideObjects = new List<GameObject>();
         needToTrack = false;
-        OldTarget = new GameObject();
-        OldTarget.AddComponent<CauntHunter>();
+        //OldTarget = new GameObject();
+        //OldTarget.AddComponent<CauntHunter>();
 
     }
 

@@ -10,7 +10,7 @@ public class AimSystem : MonoBehaviour
     private Vector3 oldPosition= new Vector3(0,0,0);
     private float BulletSpeed = 1000f;
     private float TargetSpeed = 20f;
-    private Vector3 TargetVector = new Vector3(1,1,-1);
+    private Vector3 TargetVector = new Vector3(1,0,0);
 
     private float Vpx;
     public Vector3 coord(Vector3 coordinate, Vector3 myPosition)
