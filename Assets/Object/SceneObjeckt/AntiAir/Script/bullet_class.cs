@@ -8,7 +8,7 @@ public class bullet_class : MonoBehaviour
     public GameObject bulletPrefab;
     public static Action OnTach;
     public float bulletSpeed = 1000f;
-    public float reloadTime = 10f;
+    public float reloadTime = 0.1f;
     private bool isReloading = false;
     public float MasOil = 5f;
     public float SpendOil = 5f;
@@ -16,22 +16,23 @@ public class bullet_class : MonoBehaviour
 
     public void Shoot()
     {
+        
         if (!isReloading)
-        {
-            Rigidbody bulletRb = bulletPrefab.GetComponent<Rigidbody>();
+        { 
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
-            ControlMas controlMas = bulletPrefab.GetComponent<ControlMas>();
+            ControlMas controlMas = bullet.GetComponent<ControlMas>();
             
-
             controlMas.MassCorps=MasCorps;
             controlMas.MassOil=MasOil;
             controlMas.SpendOilForSecond=SpendOil;
         
             bulletRb.AddForce(Aimer.right * bulletSpeed, ForceMode.VelocityChange);
-            
             StartCoroutine(Reload());
             OnTach?.Invoke();
         }
+        
     }   
 
 
