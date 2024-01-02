@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GravityValue : MonoBehaviour
 {
-    private Vector3 gravity = Vector3.zero;
+    private Vector3 gravity = new Vector3(0, 0, 0);
     private void Start()
     {
         Physics.gravity = new Vector3(0,0,0);

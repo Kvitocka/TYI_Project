@@ -11,8 +11,9 @@ public class linear_movement : MonoBehaviour
     public Vector3 target_direction = new Vector3(0.0f, 0.0f, 0.0f);
     public float notCorectSpeed=0f;
     public float notCorectAcceleration=0f;
-    private float target_speed = 60.0f;
+    private float target_speed = 0.0f;
     private float target_acceleration = 0.0f;
+    private bool wosStart = false;
 
     public AirResistance AirResistance;
 
@@ -30,11 +31,13 @@ public class linear_movement : MonoBehaviour
 
     private void StartGame ()
     {
+        wosStart = true;
+
         if (target_direction != new Vector3(0f, 0f, 0f)) {
 
             rb = GetComponent<Rigidbody>();
 
-            //MakeCorrectParameters();
+            MakeCorrectParameters();
 
             if(AirResistance == null){
                 rb.AddForce(target_direction * target_speed, ForceMode.VelocityChange);
@@ -46,13 +49,22 @@ public class linear_movement : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (wosStart) { 
+            transform.LookAt(target_direction+transform.position);
+        }
+    }
+
     private void MakeCorrectParameters()
     {
-        float b = target_speed/MathF.Sqrt(target_direction.x*target_direction.x+target_direction.y*target_direction.y+target_direction.z*target_direction.z);
-       target_speed=b;
+        //float b = target_speed/MathF.Sqrt(target_direction.x*target_direction.x+target_direction.y*target_direction.y+target_direction.z*target_direction.z);
+        //target_speed=b;
 
-       target_acceleration =0;
+        //target_acceleration =0;
 
+        target_speed = notCorectAcceleration;
+        target_acceleration = notCorectSpeed;
     }
 
     public void SetSpeed(String s){
