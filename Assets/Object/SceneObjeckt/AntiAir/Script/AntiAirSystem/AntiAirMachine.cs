@@ -41,7 +41,6 @@ public class AntiAirMachine : MonoBehaviour
             }
             else {
                 Vector3 point = aimSystem.coord(target.transform.position, Connection.transform.position, target.GetComponent<linear_movement>().target_direction, target.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
-                Debug.Log(point);
                 turretComponent.TargetTo(point);
                 bullet_class.Shoot();
             }

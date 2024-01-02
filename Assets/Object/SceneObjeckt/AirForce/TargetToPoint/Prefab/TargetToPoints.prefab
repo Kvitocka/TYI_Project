@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974801488993707923}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.23014, y: -0.0031757, z: 0.0014535}
   m_LocalScale: {x: 0.32964912, y: 0.32964912, z: 0.32964912}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 6682277921850128028}
   - {fileID: 5377156266978823823}
   m_Father: {fileID: 6457190416495485890}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8040978904625725399
 GameObject:
   m_ObjectHideFlags: 0
@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5313511040839169673}
   - component: {fileID: 6115178586613836701}
   - component: {fileID: 7364113532007642197}
+  - component: {fileID: 8112114744900825911}
   m_Layer: 0
   m_Name: TargetToPoints
   m_TagString: Untagged
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b0d2b055743564f82e77c319820735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 7341581660769191372, guid: 0fdc5a2ba95bf884294609bf097f2384, type: 3}
 --- !u!136 &6115178586613836701
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Height: 30
-  m_Direction: 0
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7364113532007642197
 MonoBehaviour:
@@ -214,6 +215,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caunt: 0
+--- !u!54 &8112114744900825911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040978904625725399}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2896814842294941275
 PrefabInstance:
   m_ObjectHideFlags: 0

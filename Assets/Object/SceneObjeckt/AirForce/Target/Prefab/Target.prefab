@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2273923780792795938}
   - component: {fileID: 318013530135867870}
   - component: {fileID: 3172259377204492617}
+  - component: {fileID: 5383589682327470431}
   m_Layer: 7
   m_Name: Target
   m_TagString: Target
@@ -192,7 +193,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -213,6 +214,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caunt: 0
+--- !u!114 &5383589682327470431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280912881686487074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b0d2b055743564f82e77c319820735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 7341581660769191372, guid: 0fdc5a2ba95bf884294609bf097f2384, type: 3}
 --- !u!1001 &654476004288779974
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,21 +5,28 @@ using UnityEngine;
 
 public class Direction_rotation : MonoBehaviour
 {
-    Vector3 oldPosition;
+    private Vector3 oldPosition;
 
     void Start()
     {
-        oldPosition = transform.position;
+        oldPosition = new Vector3(0,0,0);
     }
 
     void Update()
     {
-        Vector3 targetVector = transform.position - oldPosition;
-        transform.LookAt(targetVector);
+        Debug.Log("Old="+oldPosition);
+        Debug.Log("New="+transform.position);
+        float Xdiff = transform.position.x - oldPosition.x;
+        float Ydiff = transform.position.y - oldPosition.y;
+        float Zdiff = transform.position.z - oldPosition.z;
+        Debug.Log("X="+Xdiff);
+        Debug.Log("Y="+Ydiff);
+        Debug.Log("Z="+Zdiff);
 
-        Vector3 currentRotation = transform.eulerAngles;
-        currentRotation.y += 90;
-        transform.eulerAngles = currentRotation;
+        Vector3 targetPoint =transform.position + new Vector3(Xdiff,Ydiff,Zdiff);
+        Debug.Log(targetPoint);
+
+        transform.LookAt(targetPoint);
 
         oldPosition = transform.position;
     }

@@ -26,11 +26,6 @@ public class NewBehaviourScript : MonoBehaviour
                 Vector3 impulseVector = transform.position - hitPoint;
                 rb.AddForce(impulseVector * force, ForceMode.Impulse);
             }
-
-
-            
-
-            
         }
     }
 
