@@ -8407,7 +8407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139361489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 436275a13d4459746955fc6db5953473, type: 3}
   m_Name: 
@@ -11485,7 +11485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToInstantiate:
   - {fileID: 7791343981018993300, guid: 5ea82a4fd36a5be40b1f13d335ea7b6e, type: 3}
-  - {fileID: 8962351490017979392, guid: e0fa1e27253e5e540ad071c93beb91b8, type: 3}
+  - {fileID: 1206060510029847784, guid: e0fa1e27253e5e540ad071c93beb91b8, type: 3}
+  - {fileID: 3397709798389182787, guid: 8952feaa572c44e4d9ca12a1bcbc150f, type: 3}
   Lokaction: {fileID: 846701693}
 --- !u!224 &5197682034196616216
 RectTransform:
@@ -12169,6 +12170,26 @@ MonoBehaviour:
         - m_Target: {fileID: 2139361494}
           m_TargetAssemblyTypeName: PutObjecktInMap, Assembly-CSharp
           m_MethodName: AddRacketSystem
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5175009499683504164}
+            m_ObjectArgumentAssemblyTypeName: AddPrefabToCanvas, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - itemText: "\u0414\u043E\u0434\u0430\u0442\u0438 \u0420\u041F\u041F\u041E \u0437
+      \u043F\u0456\u0434\u0440\u0438\u0432\u0430\u0447\u0435\u043C"
+    itemIcon: {fileID: 21300000, guid: 81370f389d221234f97a1d36e422f723, type: 3}
+    contextItemType: 0
+    subMenuItems: []
+    onClick:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2139361494}
+          m_TargetAssemblyTypeName: PutObjecktInMap, Assembly-CSharp
+          m_MethodName: AddRacketRadiusSystem
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 5175009499683504164}

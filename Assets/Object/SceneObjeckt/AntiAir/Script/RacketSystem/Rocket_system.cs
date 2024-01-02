@@ -26,6 +26,12 @@ public class Rocket_system : MonoBehaviour
 
     public float SpendOil = 10f;
 
+    public float maxRotationSpeed = 45;
+
+    public float distance=0.5f;
+
+    public bool isRadius=false;
+
     void Update()
     {
         if(collideObjects.Count != 0 && !isReloading && WosStart)
@@ -37,7 +43,9 @@ public class Rocket_system : MonoBehaviour
             ControlMas m = rocket.GetComponent<ControlMas>();
 
             m.MassCorps = MassCorps;
+
             m.MassOil = MassOil;
+
             m.SpendOilForSecond=SpendOil;
 
             rk.acceleration = acceleration;
@@ -46,11 +54,15 @@ public class Rocket_system : MonoBehaviour
 
             rk.target = collideObjects[0].gameObject;
 
+            rk.maxRotationSpeed = maxRotationSpeed;
+
+            rk.distance = distance;
+
+            rk.IsRadiu = isRadius;
+
             rk.Shot();
 
             StartCoroutine(Reload());
-
-            WosStart = false;
         }
     }
 
@@ -91,7 +103,6 @@ public class Rocket_system : MonoBehaviour
     {
         WosStart = true;
     }
-
     public void SetMasOil(String s)
     {
         if (s == "") { s = "0"; }
@@ -107,18 +118,24 @@ public class Rocket_system : MonoBehaviour
         if (s == "") { s = "0"; }
         MassCorps = float.Parse(s);
     }
-
+    public void SetMaxRotationSpeed(String s)
+    {
+        if (s == "") { s = "0"; }
+        maxRotationSpeed = float.Parse(s);
+    }
     public void SetSpeed(String s)
     {
         if (s == "") { s = "0"; }
         speed = float.Parse(s);
     }
-
     public void SetAcelleration(String s)
     {
         if (s == "") { s = "0"; }
         acceleration = float.Parse(s);
     }
-
-
+    public void SetDistance(String s)
+    {
+        if (s == "") { s = "0"; }
+        distance = float.Parse(s);
+    }
 }

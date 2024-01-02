@@ -88,6 +88,8 @@ public class FreeFlyCamera : MonoBehaviour
     private Vector3 _initPosition;
     private Vector3 _initRotation;
 
+    private int k = 0;
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -144,7 +146,10 @@ public class FreeFlyCamera : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0)) { k--; }
+        
+
+        if (k<=0)
         {
 
             if (!_active)
@@ -155,13 +160,11 @@ public class FreeFlyCamera : MonoBehaviour
             if (Cursor.visible)
                 return;
 
-            // Translation
             if (_enableTranslation)
             {
                 transform.Translate(Vector3.forward * Input.mouseScrollDelta.y * Time.deltaTime * _translationSpeed);
             }
 
-            // Movement
             if (_enableMovement)
             {
                 Vector3 deltaPosition = Vector3.zero;
@@ -188,22 +191,18 @@ public class FreeFlyCamera : MonoBehaviour
                 if (Input.GetKey(_moveDown))
                     deltaPosition -= transform.up;
 
-                // Calc acceleration
                 CalculateCurrentIncrease(deltaPosition != Vector3.zero);
 
                 transform.position += deltaPosition * currentSpeed * _currentIncrease;
             }
 
-            // Rotation
             if (_enableRotation)
             {
-                // Pitch
                 transform.rotation *= Quaternion.AngleAxis(
                     -Input.GetAxis("Mouse Y") * _mouseSense,
                     Vector3.right
                 );
 
-                // Yaw
                 transform.rotation = Quaternion.Euler(
                     transform.eulerAngles.x,
                     transform.eulerAngles.y + Input.GetAxis("Mouse X") * _mouseSense,
@@ -211,18 +210,19 @@ public class FreeFlyCamera : MonoBehaviour
                 );
             }
 
-            // Return to init position
             if (Input.GetKeyDown(_initPositonButton))
             {
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
             }
         }
-        else { 
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            k = 2;
             Cursor.lockState = _wantedMode = CursorLockMode.None;
             Cursor.lockState = _wantedMode;
             Cursor.visible = (CursorLockMode.Locked != _wantedMode);
         }
     }
-
 }

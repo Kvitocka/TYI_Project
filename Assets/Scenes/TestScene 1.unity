@@ -431,6 +431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RacketSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 5939719381018020374, guid: 4e005fd406b5a184b9884a3c91637a3c, type: 3}
+      propertyPath: m_Radius
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6455421989264338043, guid: 4e005fd406b5a184b9884a3c91637a3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -471,7 +475,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9159606125446746920, guid: 4e005fd406b5a184b9884a3c91637a3c, type: 3}
+      propertyPath: maxRotationSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9159606125446746920, guid: 4e005fd406b5a184b9884a3c91637a3c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -504,6 +513,12 @@ MonoBehaviour:
   speed: 5
   acceleration: 1
   bulletPrefab: {fileID: 6965962681232384442, guid: d7bf89dddc2a3ce4abe85480b42680f8, type: 3}
+  MassCorps: 10
+  MassOil: 10
+  SpendOil: 10
+  maxRotationSpeed: 5
+  distance: 0.5
+  isRadius: 1
 --- !u!135 &1832745544
 SphereCollider:
   m_ObjectHideFlags: 0

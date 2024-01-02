@@ -11,7 +11,13 @@ public class Rocket_movement : MonoBehaviour
 
     public float acceleration;
 
+    public float maxRotationSpeed;
+
     private bool goToTarget = false;
+
+    public float distance;
+
+    public bool IsRadiu=false;
 
     public void Shot()
     {
@@ -26,24 +32,39 @@ public class Rocket_movement : MonoBehaviour
 
     private void Update()
     {
-        if (goToTarget)
+        if (goToTarget && target!=null)
         {
-            transform.LookAt(target.transform.position);
+            Vector3 targetDirection = target.transform.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-            Vector3 direction = (target.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, maxRotationSpeed * Time.deltaTime);
 
-            Vector3 newPosition = transform.position + direction * speed*Time.deltaTime;
-
-            transform.position = newPosition;
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
             speed += acceleration * Time.deltaTime;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position)<0.5) {
-            Debug.Log("ціль знизено");
+        if (Vector3.Distance(transform.position, target.transform.position)< distance && target != null) {
 
             Destroy(target);
             Destroy(gameObject);
+
+            if (IsRadiu) {
+
+                Collider[] colliders = Physics.OverlapSphere(transform.position, distance);
+
+                foreach (Collider collider in colliders)
+                {
+
+                    if (collider.gameObject.CompareTag("Target"))
+                    {
+                        Destroy(collider.gameObject);
+                    }
+
+                    
+                }
+
+            }
             
         }
 

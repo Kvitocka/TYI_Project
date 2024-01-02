@@ -59,7 +59,13 @@ private void Update()
         }
     }
 
-
+    public void AddRacketRadiusSystem(AddPrefabToCanvas addPrefabToCanvas)
+    {
+        if (MausPositionInMap != new Vector3(0, 0, 0))
+        {
+            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap, 2, "RacketSystem");
+        }
+    }
 
 
 
