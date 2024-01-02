@@ -43,9 +43,9 @@ public class PathExample : MonoBehaviour
 
     void Update()
     {
-        if (WosStart) {
+        if (WosStart ) {
 
-            if (value < 1)
+            if (value < 1 && points.Length!=0)
             {
                 value += speed * Time.deltaTime / 10;
                 iTween.PutOnPath(gameObject.transform, points, value);
