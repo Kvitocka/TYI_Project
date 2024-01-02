@@ -63,6 +63,8 @@ public class Rocket_system : MonoBehaviour
 
             rk.Shot();
 
+            StartCoroutine("Reload", reloadTime);
+
             StartCoroutine(Reload());
         }
     }

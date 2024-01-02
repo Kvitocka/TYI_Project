@@ -19,7 +19,7 @@ public class AntiAirMachine : MonoBehaviour
     public bullet_class bullet_class;
     public Transform Connection;
 
-    private GameObject target;
+    public GameObject target;
 
     private bool WosStart = false;
 
@@ -36,10 +36,12 @@ public class AntiAirMachine : MonoBehaviour
     {
         if (needToTrack && collideObjects.Count > 0 && WosStart)
         {
-            if (target == null) { target = GetTarget(collideObjects); }
+            if (target == null) {
+                target = GetTarget(collideObjects);
+            }
             else {
-                GameObject collideObject = target;
-                Vector3 point = aimSystem.coord(collideObject.transform.position, Connection.transform.position, collideObject.GetComponent<linear_movement>().target_direction, collideObject.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
+                Vector3 point = aimSystem.coord(target.transform.position, Connection.transform.position, target.GetComponent<linear_movement>().target_direction, target.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
+                Debug.Log(point);
                 turretComponent.TargetTo(point);
                 bullet_class.Shoot();
             }
