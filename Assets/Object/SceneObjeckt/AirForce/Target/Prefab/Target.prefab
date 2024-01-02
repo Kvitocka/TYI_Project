@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7535729431293534045}
   - component: {fileID: 2273923780792795938}
   - component: {fileID: 318013530135867870}
+  - component: {fileID: 3172259377204492617}
   m_Layer: 7
   m_Name: Target
   m_TagString: Target
@@ -199,6 +200,19 @@ CapsuleCollider:
   m_Height: 30
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3172259377204492617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280912881686487074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cf56b15c5754d48a72f73f470e0a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caunt: 0
 --- !u!1001 &654476004288779974
 PrefabInstance:
   m_ObjectHideFlags: 0

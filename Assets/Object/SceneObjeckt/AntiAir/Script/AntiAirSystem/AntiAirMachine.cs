@@ -19,8 +19,7 @@ public class AntiAirMachine : MonoBehaviour
     public bullet_class bullet_class;
     public Transform Connection;
 
-    private GameObject OldTarget;
-    private int oldTargetCode=-1;
+    private GameObject target;
 
     private bool WosStart = false;
 
@@ -30,8 +29,6 @@ public class AntiAirMachine : MonoBehaviour
         turretComponent = GetComponentInChildren<TurretComponent>();
         collideObjects = new List<GameObject>();
         needToTrack = false;
-        //OldTarget = new GameObject();
-        //OldTarget.AddComponent<CauntHunter>();
 
     }
 
@@ -39,10 +36,13 @@ public class AntiAirMachine : MonoBehaviour
     {
         if (needToTrack && collideObjects.Count > 0 && WosStart)
         {
-            GameObject collideObject = collideObjects[0];
-            Vector3 point = aimSystem.coord(collideObject.transform.position, Connection.transform.position , collideObject.GetComponent<linear_movement>().target_direction, collideObject.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
-            turretComponent.TargetTo(point);
-            bullet_class.Shoot();
+            if (target == null) { target = GetTarget(collideObjects); }
+            else {
+                GameObject collideObject = target;
+                Vector3 point = aimSystem.coord(collideObject.transform.position, Connection.transform.position, collideObject.GetComponent<linear_movement>().target_direction, collideObject.GetComponent<linear_movement>().notCorectSpeed, bullet_class.bulletSpeed);
+                turretComponent.TargetTo(point);
+                bullet_class.Shoot();
+            }
         }
     }
 
@@ -83,42 +83,23 @@ public class AntiAirMachine : MonoBehaviour
         WosStart = true;
     }
 
-    public int NumberOfCollider(List<GameObject> colider)
+    public static GameObject GetTarget(List<GameObject> colider)
     {
-        int Namber = 0;
-        int minHunter = int.MaxValue;
-
-        for (int i = 0; i < colider.Count; i++)
-        {
-            CauntHunter cauntHunter = colider[i].gameObject.GetComponent<CauntHunter>();
-            if (cauntHunter.caunt < minHunter)
+        for (int a = 0; ; a++) {
+        
+            for (int b = 0; b < colider.Count; b++)
             {
-                minHunter = cauntHunter.caunt;
-               
+                CauntHunter CH = colider[b].GetComponent<CauntHunter>();
+                if (CH!=null)
+                {
+                    if (CH.caunt == a )
+                    {
+                        CH.caunt = CH.caunt + 1;
+                        return colider[b].gameObject;
+                    }
+                }
             }
         }
-
-        for (int i = 0; i < colider.Count; i++)
-        {
-            CauntHunter cauntHunter = colider[i].gameObject.GetComponent<CauntHunter>();
-            if (cauntHunter.caunt < minHunter)
-            {
-                minHunter = cauntHunter.caunt;
-                Namber = i;
-            }
-        }
-
-        if (oldTargetCode != colider[Namber].GetComponent<CauntHunter>().myCod)
-        {
-            Debug.Log("rere");
-            colider[Namber].gameObject.GetComponent<CauntHunter>().addCaunt();
-            OldTarget.gameObject.GetComponent<CauntHunter>().minusCaunt();
-        }
-
-        OldTarget = colider[Namber].gameObject;
-        oldTargetCode = colider[Namber].GetComponent<CauntHunter>().myCod;
-
-        return Namber;
     }
 
 

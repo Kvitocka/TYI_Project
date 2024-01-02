@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(SphereCollider))]
 public class Rocket_system : MonoBehaviour
@@ -52,7 +53,7 @@ public class Rocket_system : MonoBehaviour
 
             rk.speed = speed;
 
-            rk.target = collideObjects[0].gameObject;
+            rk.target = AntiAirMachine.GetTarget(collideObjects);
 
             rk.maxRotationSpeed = maxRotationSpeed;
 
