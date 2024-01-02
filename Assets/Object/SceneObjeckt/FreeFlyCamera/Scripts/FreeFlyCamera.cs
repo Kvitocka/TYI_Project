@@ -123,7 +123,7 @@ public class FreeFlyCamera : MonoBehaviour
         }
 
         // Apply cursor state
-        //Cursor.lockState = _wantedMode;
+        Cursor.lockState = _wantedMode;
         // Hide cursor when locking
         Cursor.visible = (CursorLockMode.Locked != _wantedMode);
     }
@@ -144,75 +144,85 @@ public class FreeFlyCamera : MonoBehaviour
 
     private void Update()
     {
-        if (!_active)
-            return;
-
-        SetCursorState();
-
-        if (Cursor.visible)
-            return;
-
-        // Translation
-        if (_enableTranslation)
+        if (Input.GetMouseButton(0))
         {
-            transform.Translate(Vector3.forward * Input.mouseScrollDelta.y * Time.deltaTime * _translationSpeed);
+
+            if (!_active)
+                return;
+
+            SetCursorState();
+
+            if (Cursor.visible)
+                return;
+
+            // Translation
+            if (_enableTranslation)
+            {
+                transform.Translate(Vector3.forward * Input.mouseScrollDelta.y * Time.deltaTime * _translationSpeed);
+            }
+
+            // Movement
+            if (_enableMovement)
+            {
+                Vector3 deltaPosition = Vector3.zero;
+                float currentSpeed = _movementSpeed;
+
+                if (Input.GetKey(_boostSpeed))
+                    currentSpeed = _boostedSpeed;
+
+                if (Input.GetKey(KeyCode.W))
+                    deltaPosition += transform.forward;
+
+                if (Input.GetKey(KeyCode.S))
+                    deltaPosition -= transform.forward;
+
+                if (Input.GetKey(KeyCode.A))
+                    deltaPosition -= transform.right;
+
+                if (Input.GetKey(KeyCode.D))
+                    deltaPosition += transform.right;
+
+                if (Input.GetKey(_moveUp))
+                    deltaPosition += transform.up;
+
+                if (Input.GetKey(_moveDown))
+                    deltaPosition -= transform.up;
+
+                // Calc acceleration
+                CalculateCurrentIncrease(deltaPosition != Vector3.zero);
+
+                transform.position += deltaPosition * currentSpeed * _currentIncrease;
+            }
+
+            // Rotation
+            if (_enableRotation)
+            {
+                // Pitch
+                transform.rotation *= Quaternion.AngleAxis(
+                    -Input.GetAxis("Mouse Y") * _mouseSense,
+                    Vector3.right
+                );
+
+                // Yaw
+                transform.rotation = Quaternion.Euler(
+                    transform.eulerAngles.x,
+                    transform.eulerAngles.y + Input.GetAxis("Mouse X") * _mouseSense,
+                    transform.eulerAngles.z
+                );
+            }
+
+            // Return to init position
+            if (Input.GetKeyDown(_initPositonButton))
+            {
+                transform.position = _initPosition;
+                transform.eulerAngles = _initRotation;
+            }
         }
-
-        // Movement
-        if (_enableMovement)
-        {
-            Vector3 deltaPosition = Vector3.zero;
-            float currentSpeed = _movementSpeed;
-
-            if (Input.GetKey(_boostSpeed))
-                currentSpeed = _boostedSpeed;
-
-            if (Input.GetKey(KeyCode.W))
-                deltaPosition += transform.forward;
-
-            if (Input.GetKey(KeyCode.S))
-                deltaPosition -= transform.forward;
-
-            if (Input.GetKey(KeyCode.A))
-                deltaPosition -= transform.right;
-
-            if (Input.GetKey(KeyCode.D))
-                deltaPosition += transform.right;
-
-            if (Input.GetKey(_moveUp))
-                deltaPosition += transform.up;
-
-            if (Input.GetKey(_moveDown))
-                deltaPosition -= transform.up;
-
-            // Calc acceleration
-            CalculateCurrentIncrease(deltaPosition != Vector3.zero);
-
-            transform.position += deltaPosition * currentSpeed * _currentIncrease;
-        }
-
-        // Rotation
-        if (_enableRotation)
-        {
-            // Pitch
-            transform.rotation *= Quaternion.AngleAxis(
-                -Input.GetAxis("Mouse Y") * _mouseSense,
-                Vector3.right
-            );
-
-            // Paw
-            transform.rotation = Quaternion.Euler(
-                transform.eulerAngles.x,
-                transform.eulerAngles.y + Input.GetAxis("Mouse X") * _mouseSense,
-                transform.eulerAngles.z
-            );
-        }
-
-        // Return to init position
-        if (Input.GetKeyDown(_initPositonButton))
-        {
-            transform.position = _initPosition;
-            transform.eulerAngles = _initRotation;
+        else { 
+            Cursor.lockState = _wantedMode = CursorLockMode.None;
+            Cursor.lockState = _wantedMode;
+            Cursor.visible = (CursorLockMode.Locked != _wantedMode);
         }
     }
+
 }
