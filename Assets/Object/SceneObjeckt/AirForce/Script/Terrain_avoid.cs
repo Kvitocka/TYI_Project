@@ -17,11 +17,20 @@ public class NewBehaviourScript : MonoBehaviour
             float impulseDistance = Vector3.Distance(transform.position, collideObjects[i].transform.position);         
             float force = sphereCollider.radius/impulseDistance/5;
 
+            Ray ray = new Ray(transform.position, Vector3.down);
+            RaycastHit hit;
+
             rb = GetComponent<Rigidbody>();
+            if (Physics.Raycast(ray, out hit, sphereCollider.radius)){
+                Vector3 hitPoint = hit.point;
+                Vector3 impulseVector = transform.position - hitPoint;
+                rb.AddForce(impulseVector * force, ForceMode.Impulse);
+            }
 
-            Vector3 impulseVector = transform.position - collideObjects[i].transform.position;
 
-            rb.AddForce(impulseVector * force, ForceMode.Impulse);
+            
+
+            
         }
     }
 

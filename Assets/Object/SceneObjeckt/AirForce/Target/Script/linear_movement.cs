@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class linear_movement : MonoBehaviour
 {
-    public Vector3 target_direction = new Vector3(0.0f, 0.0f, 0.0f);
+    public Vector3 target_direction = new Vector3(1.0f, 0.0f, 0.0f);
     public float notCorectSpeed=0f;
     public float notCorectAcceleration=0f;
     private float target_speed = 0.0f;
@@ -52,7 +52,7 @@ public class linear_movement : MonoBehaviour
     private void Update()
     {
         if (wosStart) { 
-            transform.LookAt(target_direction+transform.position);
+            //transform.LookAt(target_direction+transform.position);
         }
     }
 
@@ -63,8 +63,8 @@ public class linear_movement : MonoBehaviour
 
         //target_acceleration =0;
 
-        target_speed = notCorectAcceleration;
-        target_acceleration = notCorectSpeed;
+        target_speed = notCorectSpeed;
+        target_acceleration = notCorectAcceleration;
     }
 
     public void SetSpeed(String s){

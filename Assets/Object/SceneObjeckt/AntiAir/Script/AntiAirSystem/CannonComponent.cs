@@ -35,7 +35,7 @@ public class CannonComponent : MonoBehaviour
 
             // ???? ???? ??????? 
 
-            if (transform.rotation.eulerAngles.z <= targetAngle + 0.1 && transform.rotation.eulerAngles.z >= targetAngle - 0.1)
+            if (transform.rotation.eulerAngles.z <= targetAngle + 0.0001 && transform.rotation.eulerAngles.z >= targetAngle - 0.0001)
             {
                 needRotate = false;
             }

@@ -5,6 +5,7 @@ using System;
 
 public class BulletReaction : MonoBehaviour
 {
+    public Collider collider;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("bullet"))
