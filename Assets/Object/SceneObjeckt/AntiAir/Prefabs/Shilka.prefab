@@ -1227,7 +1227,7 @@ MonoBehaviour:
   Aimer: {fileID: 160067279875867312}
   bulletPrefab: {fileID: 3627302021964877169, guid: a49c86a4bf5eac147878b1c485c0f5a2, type: 3}
   bulletSpeed: 200
-  reloadTime: 0.06
+  reloadTime: 0.1
   MasOil: 5
   SpendOil: 5
   MasCorps: 5
