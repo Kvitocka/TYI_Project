@@ -200,7 +200,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
   m_Height: 30
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -336,6 +336,7 @@ PrefabInstance:
     - {fileID: -4516479598263406248, guid: ff402955509e95c4293b2f4824c80a3f, type: 3}
     - {fileID: 781375332480504868, guid: ff402955509e95c4293b2f4824c80a3f, type: 3}
     - {fileID: 2494714514106887094, guid: ff402955509e95c4293b2f4824c80a3f, type: 3}
+    - {fileID: -3664696160093933453, guid: ff402955509e95c4293b2f4824c80a3f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff402955509e95c4293b2f4824c80a3f, type: 3}
