@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466f532c1f834084d89ad14d0aa87623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 45
+  rotationSpeed: 90
 --- !u!1 &330809439266712556
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,8 +675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Aimer: {fileID: 3858346788870101029}
   bulletPrefab: {fileID: 3627302021964877169, guid: a49c86a4bf5eac147878b1c485c0f5a2, type: 3}
-  bulletSpeed: 0.2
-  reloadTime: 5
+  bulletSpeed: 400
+  reloadTime: 0.06
   MasOil: 5
   SpendOil: 5
   MasCorps: 5
@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f070f40dbd36dfd41908b89b59bc1d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 45
+  rotationSpeed: 90
   maxAngle: 70
   minAngle: 0
   CannonPosition: {fileID: 2421070189103289190}
@@ -1377,6 +1377,7 @@ MonoBehaviour:
   aimSystem: {fileID: 1402089366071048675}
   bullet_class: {fileID: 8246033009088680500}
   Connection: {fileID: 2421070189103289190}
+  target: {fileID: 0}
 --- !u!114 &3227833958129288038
 MonoBehaviour:
   m_ObjectHideFlags: 0
