@@ -48,7 +48,7 @@ private void Update()
     {
         if (MausPositionInMap != new Vector3(0, 0, 0))
         {
-            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap, 0, "AntiAirSystem");
+            addPrefabToCanvas.AddPrefabToCanvasObject(MausPositionInMap, 0, "Shilka");
         }
     }
     public void AddRacketSystem(AddPrefabToCanvas addPrefabToCanvas)
